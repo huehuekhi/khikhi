@@ -32,6 +32,1268 @@
 
 </head>
 
+<style>
+  
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #444444;
+}
+
+a {
+  color: #1acc8d;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #34e5a6;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+}
+
+/*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background: #fff;
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid #1acc8d;
+  border-top-color: #d2f9eb;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: animate-preloader 1s linear infinite;
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Back to top button
+--------------------------------------------------------------*/
+.back-to-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 996;
+  background: #1acc8d;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  transition: all 0.4s;
+}
+
+.back-to-top i {
+  font-size: 28px;
+  color: #fff;
+  line-height: 0;
+}
+
+.back-to-top:hover {
+  background: #2be4a2;
+  color: #fff;
+}
+
+.back-to-top.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*--------------------------------------------------------------
+# Disable AOS delay on mobile
+--------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  [data-aos-delay] {
+    transition-delay: 0 !important;
+  }
+}
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+#header {
+  height: 80px;
+  transition: all 0.5s;
+  z-index: 997;
+  transition: all 0.5s;
+  background: rgba(0, 89, 255, 0.91);
+}
+
+#header.header-transparent {
+  background: transparent;
+}
+
+#header.header-scrolled {
+  background: #010351;
+  height: 60px;
+}
+
+#header .logo h1 {
+  font-size: 28px;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-weight: 700;
+}
+
+#header .logo h1 a,
+#header .logo h1 a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+#header .logo img {
+  padding: 0;
+  margin: 0;
+  max-height: 40px;
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+/**
+* Desktop Navigation 
+*/
+.navbar {
+  padding: 0;
+}
+
+.navbar ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+
+.navbar li {
+  position: relative;
+}
+
+.navbar a,
+.navbar a:focus {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0 10px 30px;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+  transition: 0.3s;
+}
+
+.navbar a i,
+.navbar a:focus i {
+  font-size: 12px;
+  line-height: 0;
+  margin-left: 5px;
+}
+
+.navbar>ul>li>a:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 3px;
+  left: 30px;
+  background-color: #1acc8d;
+  visibility: hidden;
+  width: 0px;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.navbar a:hover:before,
+.navbar li:hover>a:before,
+.navbar .active:before {
+  visibility: visible;
+  width: 25px;
+}
+
+.navbar a:hover,
+.navbar .active,
+.navbar .active:focus,
+.navbar li:hover>a {
+  color: #fff;
+}
+
+.navbar .dropdown ul {
+  display: block;
+  position: absolute;
+  left: 30px;
+  top: calc(100% + 30px);
+  margin: 0;
+  padding: 10px 0;
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  background: #fff;
+  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+  transition: 0.3s;
+  border-radius: 4px;
+}
+
+.navbar .dropdown ul li {
+  min-width: 200px;
+}
+
+.navbar .dropdown ul a {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: none;
+  color: #01036f;
+}
+
+.navbar .dropdown ul a i {
+  font-size: 12px;
+}
+
+.navbar .dropdown ul a:hover,
+.navbar .dropdown ul .active:hover,
+.navbar .dropdown ul li:hover>a {
+  color: #1acc8d;
+}
+
+.navbar .dropdown:hover>ul {
+  opacity: 1;
+  top: 100%;
+  visibility: visible;
+}
+
+.navbar .dropdown .dropdown ul {
+  top: 0;
+  left: calc(100% - 30px);
+  visibility: hidden;
+}
+
+.navbar .dropdown .dropdown:hover>ul {
+  opacity: 1;
+  top: 0;
+  left: 100%;
+  visibility: visible;
+}
+
+@media (max-width: 1366px) {
+  .navbar .dropdown .dropdown ul {
+    left: -90%;
+  }
+
+  .navbar .dropdown .dropdown:hover>ul {
+    left: -100%;
+  }
+}
+
+/**
+* Mobile Navigation 
+*/
+.mobile-nav-toggle {
+  color: #fff;
+  font-size: 28px;
+  cursor: pointer;
+  display: none;
+  line-height: 0;
+  transition: 0.5s;
+}
+
+@media (max-width: 991px) {
+  .mobile-nav-toggle {
+    display: block;
+  }
+
+  .navbar ul {
+    display: none;
+  }
+}
+
+.navbar-mobile {
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(1, 3, 91, 0.9);
+  transition: 0.3s;
+  z-index: 999;
+}
+
+.navbar-mobile .mobile-nav-toggle {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.navbar-mobile ul {
+  display: block;
+  position: absolute;
+  top: 55px;
+  right: 15px;
+  bottom: 15px;
+  left: 15px;
+  padding: 10px 0;
+  border-radius: 8px;
+  background-color: #fff;
+  overflow-y: auto;
+  transition: 0.3s;
+}
+
+.navbar-mobile>ul>li>a:before {
+  left: 20px;
+}
+
+.navbar-mobile a,
+.navbar-mobile a:focus {
+  padding: 10px 20px;
+  font-size: 15px;
+  color: #0205a1;
+}
+
+.navbar-mobile a:hover,
+.navbar-mobile .active,
+.navbar-mobile li:hover>a {
+  color: #3f43fd;
+}
+
+.navbar-mobile .getstarted,
+.navbar-mobile .getstarted:focus {
+  margin: 15px;
+}
+
+.navbar-mobile .dropdown ul,
+.navbar-mobile .dropdown .dropdown ul {
+  position: static;
+  display: none;
+  margin: 10px 20px;
+  padding: 10px 0;
+  z-index: 99;
+  opacity: 1;
+  visibility: visible;
+  background: #fff;
+  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+}
+
+.navbar-mobile .dropdown ul li,
+.navbar-mobile .dropdown .dropdown ul li {
+  min-width: 200px;
+}
+
+.navbar-mobile .dropdown ul a,
+.navbar-mobile .dropdown .dropdown ul a {
+  padding: 10px 20px;
+}
+
+.navbar-mobile .dropdown ul a i,
+.navbar-mobile .dropdown .dropdown ul a i {
+  font-size: 12px;
+}
+
+.navbar-mobile .dropdown ul a:hover,
+.navbar-mobile .dropdown ul .active:hover,
+.navbar-mobile .dropdown ul li:hover>a,
+.navbar-mobile .dropdown .dropdown ul a:hover,
+.navbar-mobile .dropdown .dropdown ul .active:hover,
+.navbar-mobile .dropdown .dropdown ul li:hover>a {
+  color: #1acc8d;
+}
+
+.navbar-mobile .dropdown>.dropdown-active,
+.navbar-mobile .dropdown .dropdown>.dropdown-active {
+  display: block;
+}
+
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+#hero {
+  width: 100%;
+  background: url("../img/hero-bg.jpg");
+  position: relative;
+  padding: 120px 0 0 0;
+}
+
+#hero:before {
+  content: "";
+  background: rgba(0, 89, 255, 0.91);
+  
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+#hero h1 {
+  margin: 0 0 20px 0;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#hero h1 span {
+  color: #fff;
+  border-bottom: 4px solid #1acc8d;
+}
+
+#hero h2 {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 40px;
+  font-size: 24px;
+}
+
+#hero .btn-get-started {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 30px;
+  border-radius: 50px;
+  transition: 0.5s;
+  color: #fff;
+  background: #1acc8d;
+}
+
+#hero .btn-get-started:hover {
+  background: #17b57d;
+}
+
+#hero .animated {
+  animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
+
+@media (min-width: 1024px) {
+  #hero {
+    background-attachment: fixed;
+  }
+}
+
+@media (max-width: 991px) {
+  #hero {
+    padding-top: 80px;
+  }
+
+  #hero .animated {
+    animation: none;
+  }
+
+  #hero .hero-img {
+    text-align: center;
+  }
+
+  #hero .hero-img img {
+    max-width: 50%;
+  }
+
+  #hero h1 {
+    font-size: 28px;
+    line-height: 32px;
+    margin-bottom: 10px;
+  }
+
+  #hero h2 {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 575px) {
+  #hero .hero-img img {
+    width: 80%;
+  }
+}
+
+@keyframes up-down {
+  0% {
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+.hero-waves {
+  display: block;
+  margin-top: 60px;
+  width: 100%;
+  height: 60px;
+  z-index: 5;
+  position: relative;
+}
+
+.wave1 use {
+  animation: move-forever1 10s linear infinite;
+  animation-delay: -2s;
+}
+
+.wave2 use {
+  animation: move-forever2 8s linear infinite;
+  animation-delay: -2s;
+}
+
+.wave3 use {
+  animation: move-forever3 6s linear infinite;
+  animation-delay: -2s;
+}
+
+@keyframes move-forever1 {
+  0% {
+    transform: translate(85px, 0%);
+  }
+
+  100% {
+    transform: translate(-90px, 0%);
+  }
+}
+
+@keyframes move-forever2 {
+  0% {
+    transform: translate(-90px, 0%);
+  }
+
+  100% {
+    transform: translate(85px, 0%);
+  }
+}
+
+@keyframes move-forever3 {
+  0% {
+    transform: translate(-90px, 0%);
+  }
+
+  100% {
+    transform: translate(85px, 0%);
+  }
+}
+
+/*--------------------------------------------------------------
+# Sections General
+--------------------------------------------------------------*/
+section {
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.section-bg {
+  background-color: #f5f5ff;
+}
+
+.section-title {
+  padding-bottom: 40px;
+}
+
+.section-title h2 {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0;
+  line-height: 1px;
+  margin: 0 0 5px 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #aaaaaa;
+  font-family: "Poppins", sans-serif;
+}
+
+.section-title h2::after {
+  content: "";
+  width: 120px;
+  height: 1px;
+  display: inline-block;
+  background: #1acc8d;
+  margin: 4px 10px;
+}
+
+.section-title p {
+  margin: 0;
+  margin: 0;
+  font-size: 36px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+  color: #010483;
+}
+
+/*--------------------------------------------------------------
+# Breadcrumbs
+--------------------------------------------------------------*/
+.breadcrumbs {
+  padding: 20px 0;
+  background-color: #fafaff;
+  min-height: 40px;
+  margin-top: 80px;
+}
+
+@media (max-width: 992px) {
+  .breadcrumbs {
+    margin-top: 64px;
+  }
+}
+
+.breadcrumbs h2 {
+  font-size: 24px;
+  font-weight: 400;
+  margin: 0;
+}
+
+@media (max-width: 992px) {
+  .breadcrumbs h2 {
+    margin: 0 0 10px 0;
+  }
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+}
+
+.breadcrumbs ol li+li {
+  padding-left: 10px;
+}
+
+.breadcrumbs ol li+li::before {
+  display: inline-block;
+  padding-right: 10px;
+  color: #6c757d;
+  content: "/";
+}
+
+@media (max-width: 768px) {
+  .breadcrumbs .d-flex {
+    display: block !important;
+  }
+
+  .breadcrumbs ol {
+    display: block;
+  }
+
+  .breadcrumbs ol li {
+    display: inline-block;
+  }
+}
+
+/*--------------------------------------------------------------
+# About
+--------------------------------------------------------------*/
+.about {
+  padding: 40px 0 0 0;
+}
+
+.about .icon-boxes h3 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #010483;
+  margin-bottom: 15px;
+}
+
+.about .icon-box {
+  margin-top: 40px;
+}
+
+.about .icon-box .icon {
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border: 2px solid #7ceec6;
+  border-radius: 50px;
+  transition: 0.5s;
+}
+
+.about .icon-box .icon i {
+  color: #1acc8d;
+  font-size: 32px;
+}
+
+.about .icon-box:hover .icon {
+  background: #1acc8d;
+  border-color: #1acc8d;
+}
+
+.about .icon-box:hover .icon i {
+  color: #fff;
+}
+
+.about .icon-box .title {
+  margin-left: 85px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.about .icon-box .title a {
+  color: #343a40;
+  transition: 0.3s;
+}
+
+.about .icon-box .title a:hover {
+  color: #1acc8d;
+}
+
+.about .icon-box .description {
+  margin-left: 85px;
+  line-height: 24px;
+  font-size: 14px;
+}
+
+.about .video-box {
+  background: url("../img/about.jpg") center center no-repeat;
+  background-size: contain;
+  min-height: 300px;
+}
+
+.about .play-btn {
+  width: 94px;
+  height: 94px;
+  background: radial-gradient(#3f43fd 50%, rgba(63, 67, 253, 0.4) 52%);
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  left: calc(50% - 47px);
+  top: calc(50% - 47px);
+  overflow: hidden;
+}
+
+.about .play-btn::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-40%) translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 15px solid #fff;
+  z-index: 100;
+  transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.about .play-btn::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  animation-delay: 0s;
+  animation: pulsate-btn 2s;
+  animation-direction: forwards;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps;
+  opacity: 1;
+  border-radius: 50%;
+  border: 5px solid rgba(63, 67, 253, 0.7);
+  top: -15%;
+  left: -15%;
+  background: rgba(198, 16, 0, 0);
+}
+
+.about .play-btn:hover::after {
+  border-left: 15px solid #3f43fd;
+  transform: scale(20);
+}
+
+.about .play-btn:hover::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-40%) translateY(-50%);
+  width: 0;
+  height: 0;
+  border: none;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 15px solid #fff;
+  z-index: 200;
+  animation: none;
+  border-radius: 0;
+}
+
+@keyframes pulsate-btn {
+  0% {
+    transform: scale(0.6, 0.6);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1, 1);
+    opacity: 0;
+  }
+}
+
+/*--------------------------------------------------------------
+# Features
+--------------------------------------------------------------*/
+.features .icon-box {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background: #f5f5ff;
+  transition: ease-in-out 0.3s;
+}
+
+.features .icon-box i {
+  font-size: 32px;
+  padding-right: 10px;
+  line-height: 1;
+}
+
+.features .icon-box h3 {
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-size: 16px;
+}
+
+.features .icon-box h3 a {
+  color: #010483;
+  transition: ease-in-out 0.3s;
+}
+
+.features .icon-box h3 a:hover {
+  color: #01036f;
+}
+
+.features .icon-box:hover {
+  background: #ebebff;
+}
+
+/*--------------------------------------------------------------
+# Counts
+--------------------------------------------------------------*/
+.counts {
+  background: #f5f5ff;
+  padding: 70px 0 60px;
+}
+
+.counts .count-box {
+  padding: 30px 30px 25px 30px;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  background: #fff;
+}
+
+.counts .count-box i {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  background: #1acc8d;
+  padding: 12px;
+  color: #fff;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  width: 48px;
+  height: 48px;
+}
+
+.counts .count-box span {
+  font-size: 36px;
+  display: block;
+  font-weight: 600;
+  color: #010483;
+}
+
+.counts .count-box p {
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+}
+
+/*--------------------------------------------------------------
+# Details
+--------------------------------------------------------------*/
+.details .content+.content {
+  margin-top: 100px;
+}
+
+.details .content h3 {
+  font-weight: 600;
+  font-size: 26px;
+  color: #010483;
+}
+
+.details .content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.details .content ul li {
+  padding-bottom: 10px;
+}
+
+.details .content ul i {
+  font-size: 20px;
+  padding-right: 4px;
+  color: #1acc8d;
+}
+
+.details .content p:last-child {
+  margin-bottom: 0;
+}
+
+
+/*--------------------------------------------------------------
+# Gallery
+--------------------------------------------------------------*/
+.gallery .gallery-item {
+  overflow: hidden;
+  border-right: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+}
+
+.gallery .gallery-item img {
+  transition: all ease-in-out 0.4s;
+}
+
+.gallery .gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+
+/*--------------------------------------------------------------
+# Contact
+--------------------------------------------------------------*/
+.contact .info {
+  width: 100%;
+  background: #fff;
+}
+
+.contact .info i {
+  font-size: 20px;
+  color: #3f43fd;
+  float: left;
+  width: 44px;
+  height: 44px;
+  background: #f0f0ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+}
+
+.contact .info h4 {
+  padding: 0 0 0 60px;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #010483;
+}
+
+.contact .info p {
+  padding: 0 0 0 60px;
+  margin-bottom: 0;
+  font-size: 14px;
+  color: #0205a1;
+}
+
+.contact .info .email,
+.contact .info .phone {
+  margin-top: 40px;
+}
+
+.contact .info .email:hover i,
+.contact .info .address:hover i,
+.contact .info .phone:hover i {
+  background: #1acc8d;
+  color: #fff;
+}
+
+.contact .php-email-form {
+  width: 100%;
+  background: #fff;
+}
+
+.contact .php-email-form .form-group {
+  padding-bottom: 8px;
+}
+
+.contact .php-email-form .error-message {
+  display: none;
+  color: #fff;
+  background: #ed3c0d;
+  text-align: left;
+  padding: 15px;
+  font-weight: 600;
+}
+
+.contact .php-email-form .error-message br+br {
+  margin-top: 25px;
+}
+
+.contact .php-email-form .sent-message {
+  display: none;
+  color: #fff;
+  background: #18d26e;
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
+}
+
+.contact .php-email-form .loading {
+  display: none;
+  background: #fff;
+  text-align: center;
+  padding: 15px;
+}
+
+.contact .php-email-form .loading:before {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  margin: 0 10px -6px 0;
+  border: 3px solid #18d26e;
+  border-top-color: #eee;
+  animation: animate-loading 1s linear infinite;
+}
+
+.contact .php-email-form input,
+.contact .php-email-form textarea {
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: none;
+  font-size: 14px;
+}
+
+.contact .php-email-form input {
+  height: 44px;
+}
+
+.contact .php-email-form textarea {
+  padding: 10px 12px;
+}
+
+.contact .php-email-form button[type=submit] {
+  background: #1acc8d;
+  border: 0;
+  padding: 10px 30px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 50px;
+}
+
+.contact .php-email-form button[type=submit]:hover {
+  background: #34e5a6;
+}
+
+@keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+#footer {
+  background: #010351;
+  padding: 0 0 30px 0;
+  color: #fff;
+  font-size: 14px;
+}
+
+#footer .footer-top {
+  padding: 60px 0 30px 0;
+}
+
+#footer .footer-top .footer-info {
+  margin-bottom: 15px;
+  background: #010246;
+  color: #fff;
+  border-top: 4px solid #1acc8d;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+#footer .footer-top .footer-info h3 {
+  font-size: 24px;
+  margin: 0 0 20px 0;
+  padding: 2px 0 2px 0;
+  line-height: 1;
+  font-weight: 700;
+}
+
+#footer .footer-top .footer-info p {
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+#footer .footer-top .social-links a {
+  font-size: 18px;
+  display: inline-block;
+  color: #fff;
+  line-height: 1;
+  padding: 8px 0;
+  margin-right: 4px;
+  border-radius: 50%;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: 0.3s;
+}
+
+#footer .footer-top .social-links a:hover {
+  background: #1acc8d;
+  color: #fff;
+  text-decoration: none;
+}
+
+#footer .footer-top h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+#footer .footer-top .footer-links {
+  margin-bottom: 30px;
+}
+
+#footer .footer-top .footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#footer .footer-top .footer-links ul i {
+  padding-right: 2px;
+  color: #61ebba;
+  font-size: 18px;
+  line-height: 1;
+}
+
+#footer .footer-top .footer-links ul li {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+#footer .footer-top .footer-links ul li:first-child {
+  padding-top: 0;
+}
+
+#footer .footer-top .footer-links ul a {
+  color: #fff;
+  transition: 0.3s;
+  display: inline-block;
+  line-height: 1;
+}
+
+#footer .footer-top .footer-links ul a:hover {
+  color: #4be8b0;
+}
+
+#footer .footer-top .footer-newsletter form {
+  margin-top: 30px;
+  background: #fff;
+  padding: 6px 10px 6px 15px;
+  position: relative;
+  border-radius: 50px;
+}
+
+#footer .footer-top .footer-newsletter form input[type=email] {
+  border: 0;
+  padding: 4px;
+  width: calc(100% - 110px);
+}
+
+#footer .footer-top .footer-newsletter form input[type=submit] {
+  position: absolute;
+  top: 0;
+  right: -2px;
+  bottom: 0;
+  border: 0;
+  background: none;
+  font-size: 16px;
+  padding: 0 20px;
+  background: #1acc8d;
+  color: #fff;
+  transition: 0.3s;
+  border-radius: 50px;
+}
+
+#footer .footer-top .footer-newsletter form input[type=submit]:hover {
+  background: #149f6e;
+}
+
+#footer .copyright {
+  border-top: 1px solid #010479;
+  text-align: center;
+  padding-top: 30px;
+}
+
+#footer .credits {
+  padding-top: 10px;
+  text-align: center;
+  font-size: 13px;
+  color: #fff;
+}
+
+@media (max-width: 575px) {
+  #footer .footer-top .footer-info {
+    margin: -20px 0 30px 0;
+  }
+}
+</style>
+
 <body>
 
   <!-- ======= Header ======= -->
@@ -92,7 +1354,7 @@
           </div>
         </div>
         <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
-          <img src="assets/img/hero-imgg.png"  class="img-fluid animated" alt="">
+          <img src="assets/img/hero-imgg.png" class="img-fluid animated" alt="">
         </div>
       </div>
     </div>
@@ -131,24 +1393,32 @@
             class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5"
             data-aos="fade-left">
             <h3>KNOW ABOUT ME </h3>
-            <p>Hi Guys, This is Pinak, a Tech Enthussiat, Content Writer & Video Editor. CUrrently i'm pursuing my B.Tech from Lovely Professional University. I have worked with 3 different organisations with different roles and i have worked with more than 50+ personal clients. I'm and intermediate at HTML, CSS, JavaScript, Python, Java including NodeJS & ReactJS. My Passions are Coding, StockMarket, Finance & New Gen Technologies. </p>
+            <p>Hi Guys, This is Pinak, a Tech Enthussiat, Content Writer & Video Editor. CUrrently i'm pursuing my
+              B.Tech from Lovely Professional University. I have worked with 3 different organisations with different
+              roles and i have worked with more than 50+ personal clients. I'm and intermediate at HTML, CSS,
+              JavaScript, Python, Java including NodeJS & ReactJS. My Passions are Coding, StockMarket, Finance & New
+              Gen Technologies. </p>
 
             <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
               <div class="icon"><i class="bx bxs-video"></i></div>
               <h4 class="title"><a href="">Video Editor</a></h4>
-              <p class="description">I'm a professional video editor and i use different types of softwares like AlightMotion, VN, FilMora, After EFfects, Premiere Pro For Video Editing.</p>
+              <p class="description">I'm a professional video editor and i use different types of softwares like
+                AlightMotion, VN, FilMora, After EFfects, Premiere Pro For Video Editing.</p>
             </div>
 
             <div class="icon-box" data-aos="zoom-in" data-aos-delay="200">
               <div class="icon"><i class="bx bxs-edit"></i></div>
               <h4 class="title"><a href="">Content Writer</a></h4>
-              <p class="description">Since My School Life, i was good at writing paragraphs regarding any topic so i wanted to pursue my career as a part time content writer. I have worked with Marpu Foundation as a content writer and currently i write on my own blog.</p>
+              <p class="description">Since My School Life, i was good at writing paragraphs regarding any topic so i
+                wanted to pursue my career as a part time content writer. I have worked with Marpu Foundation as a
+                content writer and currently i write on my own blog.</p>
             </div>
 
             <div class="icon-box" data-aos="zoom-in" data-aos-delay="300">
               <div class="icon"><i class="bx bx-atom"></i></div>
               <h4 class="title"><a href="">Graphic/UI/Web Designing & Development</a></h4>
-              <p class="description">Being a video editor, designing is the one of the major thing which i like. Other than that, i like making UI Designs, Web Designs and Graphic Designing.</p>
+              <p class="description">Being a video editor, designing is the one of the major thing which i like. Other
+                than that, i like making UI Designs, Web Designs and Graphic Designing.</p>
             </div>
 
           </div>
@@ -233,11 +1503,18 @@
           <div class="col-md-8 pt-4" data-aos="fade-up">
             <h3>Video Editing</h3>
             <p class="fst-italic">
-              Armed with the latest editing tools and techniques, I bring innovation to every project, delivering results that are modern, fresh, and on-trend. From short-form social media content to feature-length films, I am well-versed in handling diverse projects across various genres, ensuring a tailored approach to your unique needs.Whether you're a startup, a corporate giant, or a content creator, my video editing prowess will help amplify your brand's message, engaging viewers and leaving a lasting impression. Complementing stunning visuals with perfectly synced soundtracks, my editing finesse extends to audio, ensuring a harmonious blend of sight and sound that evokes emotion and captivates hearts.
+              Armed with the latest editing tools and techniques, I bring innovation to every project, delivering
+              results that are modern, fresh, and on-trend. From short-form social media content to feature-length
+              films, I am well-versed in handling diverse projects across various genres, ensuring a tailored approach
+              to your unique needs.Whether you're a startup, a corporate giant, or a content creator, my video editing
+              prowess will help amplify your brand's message, engaging viewers and leaving a lasting impression.
+              Complementing stunning visuals with perfectly synced soundtracks, my editing finesse extends to audio,
+              ensuring a harmonious blend of sight and sound that evokes emotion and captivates hearts.
             </p>
 
             <p>
-              Ready to take your videos to new heights? Let's collaborate and create magic together! Contact me today, and let's discuss how I can elevate your content through the art of video editing. 
+              Ready to take your videos to new heights? Let's collaborate and create magic together! Contact me today,
+              and let's discuss how I can elevate your content through the art of video editing.
             </p>
           </div>
         </div>
@@ -249,14 +1526,22 @@
           <div class="col-md-8 pt-5 order-2 order-md-1" data-aos="fade-up">
             <h3>Content Writing</h3>
             <p class="fst-italic">
-              Are you in need of engaging, well-crafted content that captivates your audience and drives results? Look no further! Allow me to introduce myself, a highly skilled and passionate content writer ready to take your brand to new heights.
+              Are you in need of engaging, well-crafted content that captivates your audience and drives results? Look
+              no further! Allow me to introduce myself, a highly skilled and passionate content writer ready to take
+              your brand to new heights.
             </p>
             <p>
-              From captivating blog posts and informative articles to compelling website copy and persuasive marketing content, I possess the versatility to cater to all your writing needs. I can adeptly adapt my style to suit various niches and industries.
-              Writing is my passion, and I love weaving words into captivating stories. With a flair for creativity, I will ensure that your brand's voice shines through in every piece of content, leaving a lasting impact on your readers.
+              From captivating blog posts and informative articles to compelling website copy and persuasive marketing
+              content, I possess the versatility to cater to all your writing needs. I can adeptly adapt my style to
+              suit various niches and industries.
+              Writing is my passion, and I love weaving words into captivating stories. With a flair for creativity, I
+              will ensure that your brand's voice shines through in every piece of content, leaving a lasting impact on
+              your readers.
             </p>
             <p>
-              Ready to take your brand's content to new heights? Let's collaborate and create compelling narratives that resonate with your audience. Contact me today, and let's discuss how I can elevate your content strategy and drive success for your brand. 
+              Ready to take your brand's content to new heights? Let's collaborate and create compelling narratives that
+              resonate with your audience. Contact me today, and let's discuss how I can elevate your content strategy
+              and drive success for your brand.
             </p>
           </div>
         </div>
@@ -267,14 +1552,20 @@
           </div>
           <div class="col-md-8 pt-5" data-aos="fade-up">
             <h3>Web Designing & Development</h3>
-            <p>With a passion for aesthetics and a keen eye for design, I craft visually stunning websites that reflect your brand identity and resonate with your target audience. Your website will be a true work of art, capturing attention from the moment visitors land on it.</p>
+            <p>With a passion for aesthetics and a keen eye for design, I craft visually stunning websites that reflect
+              your brand identity and resonate with your target audience. Your website will be a true work of art,
+              capturing attention from the moment visitors land on it.</p>
 
             <p>
-              I believe that a great website should not only look stunning but also provide an intuitive and delightful user experience. I ensure that every element of your website is user-friendly and optimized for maximum engagement.
+              I believe that a great website should not only look stunning but also provide an intuitive and delightful
+              user experience. I ensure that every element of your website is user-friendly and optimized for maximum
+              engagement.
             </p>
             <p>
-              Utilizing the latest web technologies and coding standards, I build robust and responsive websites that load quickly and function flawlessly across all devices and browsers.
-              From HTML, CSS, and JavaScript to content management systems like WordPress and e-commerce platforms like Shopify, my technical skills encompass a wide array of tools necessary to build exceptional websites.
+              Utilizing the latest web technologies and coding standards, I build robust and responsive websites that
+              load quickly and function flawlessly across all devices and browsers.
+              From HTML, CSS, and JavaScript to content management systems like WordPress and e-commerce platforms like
+              Shopify, my technical skills encompass a wide array of tools necessary to build exceptional websites.
             </p>
           </div>
         </div>
@@ -285,13 +1576,18 @@
           <div class="col-md-8 pt-5 order-2 order-md-1" data-aos="fade-up">
             <h3>Graphic Designing & UI Designing</h3>
             <p class="fst-italic">
-              With a deep-rooted passion for art and design, I have a natural ability to create captivating visuals that leave a lasting impression. From stunning logos to eye-catching marketing materials, I infuse each project with artistic brilliance.
+              With a deep-rooted passion for art and design, I have a natural ability to create captivating visuals that
+              leave a lasting impression. From stunning logos to eye-catching marketing materials, I infuse each project
+              with artistic brilliance.
             </p>
             <p>
-              I firmly believe that user experience is paramount to the success of any digital product. I prioritize understanding your target audience and their needs, ensuring that my designs are intuitive and seamless, leading to enhanced user satisfaction.
+              I firmly believe that user experience is paramount to the success of any digital product. I prioritize
+              understanding your target audience and their needs, ensuring that my designs are intuitive and seamless,
+              leading to enhanced user satisfaction.
             </p>
             <p>
-              Staying ahead of design trends and emerging technologies, I ensure that my UI designs are not only contemporary but also future-proof, keeping your digital products at the forefront of innovation.
+              Staying ahead of design trends and emerging technologies, I ensure that my UI designs are not only
+              contemporary but also future-proof, keeping your digital products at the forefront of innovation.
             </p>
           </div>
         </div>
@@ -301,7 +1597,7 @@
       </div>
     </section><!-- End Details Section -->
 
-     <!-- ======= Gallery Section ======= -->
+    <!-- ======= Gallery Section ======= -->
     <!-- <section id="gallery" class="gallery">
       <div class="container">
 
@@ -465,7 +1761,7 @@
               <p>
                 <!-- A108 Adam Street <br>
                 NY 535022, USA<br><br> -->
-                <!-- <strong>Phone:</strong> --> <br> 
+                <!-- <strong>Phone:</strong> --> <br>
                 <strong>Email:</strong> pinak@zoomers.in<br>
               </p>
               <div class="social-links mt-3">
@@ -500,7 +1796,7 @@
             </ul>
           </div>
 
-          
+
 
         </div>
       </div>
@@ -534,6 +1830,1510 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+    !function(e,t){"object"==typeof exports&&"undefined"!=typeof module?module.exports=t():"function"==typeof define&&define.amd?define(t):e.AOS=t()}(this,function(){"use strict";var e="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:{},t="Expected a function",n=NaN,o="[object Symbol]",i=/^\s+|\s+$/g,a=/^[-+]0x[0-9a-f]+$/i,r=/^0b[01]+$/i,c=/^0o[0-7]+$/i,s=parseInt,u="object"==typeof e&&e&&e.Object===Object&&e,d="object"==typeof self&&self&&self.Object===Object&&self,l=u||d||Function("return this")(),f=Object.prototype.toString,m=Math.max,p=Math.min,b=function(){return l.Date.now()};function v(e,n,o){var i,a,r,c,s,u,d=0,l=!1,f=!1,v=!0;if("function"!=typeof e)throw new TypeError(t);function y(t){var n=i,o=a;return i=a=void 0,d=t,c=e.apply(o,n)}function h(e){var t=e-u;return void 0===u||t>=n||t<0||f&&e-d>=r}function k(){var e=b();if(h(e))return x(e);s=setTimeout(k,function(e){var t=n-(e-u);return f?p(t,r-(e-d)):t}(e))}function x(e){return s=void 0,v&&i?y(e):(i=a=void 0,c)}function O(){var e=b(),t=h(e);if(i=arguments,a=this,u=e,t){if(void 0===s)return function(e){return d=e,s=setTimeout(k,n),l?y(e):c}(u);if(f)return s=setTimeout(k,n),y(u)}return void 0===s&&(s=setTimeout(k,n)),c}return n=w(n)||0,g(o)&&(l=!!o.leading,r=(f="maxWait"in o)?m(w(o.maxWait)||0,n):r,v="trailing"in o?!!o.trailing:v),O.cancel=function(){void 0!==s&&clearTimeout(s),d=0,i=u=a=s=void 0},O.flush=function(){return void 0===s?c:x(b())},O}function g(e){var t=typeof e;return!!e&&("object"==t||"function"==t)}function w(e){if("number"==typeof e)return e;if(function(e){return"symbol"==typeof e||function(e){return!!e&&"object"==typeof e}(e)&&f.call(e)==o}(e))return n;if(g(e)){var t="function"==typeof e.valueOf?e.valueOf():e;e=g(t)?t+"":t}if("string"!=typeof e)return 0===e?e:+e;e=e.replace(i,"");var u=r.test(e);return u||c.test(e)?s(e.slice(2),u?2:8):a.test(e)?n:+e}var y=function(e,n,o){var i=!0,a=!0;if("function"!=typeof e)throw new TypeError(t);return g(o)&&(i="leading"in o?!!o.leading:i,a="trailing"in o?!!o.trailing:a),v(e,n,{leading:i,maxWait:n,trailing:a})},h="Expected a function",k=NaN,x="[object Symbol]",O=/^\s+|\s+$/g,j=/^[-+]0x[0-9a-f]+$/i,E=/^0b[01]+$/i,N=/^0o[0-7]+$/i,z=parseInt,C="object"==typeof e&&e&&e.Object===Object&&e,A="object"==typeof self&&self&&self.Object===Object&&self,q=C||A||Function("return this")(),L=Object.prototype.toString,T=Math.max,M=Math.min,S=function(){return q.Date.now()};function D(e){var t=typeof e;return!!e&&("object"==t||"function"==t)}function H(e){if("number"==typeof e)return e;if(function(e){return"symbol"==typeof e||function(e){return!!e&&"object"==typeof e}(e)&&L.call(e)==x}(e))return k;if(D(e)){var t="function"==typeof e.valueOf?e.valueOf():e;e=D(t)?t+"":t}if("string"!=typeof e)return 0===e?e:+e;e=e.replace(O,"");var n=E.test(e);return n||N.test(e)?z(e.slice(2),n?2:8):j.test(e)?k:+e}var $=function(e,t,n){var o,i,a,r,c,s,u=0,d=!1,l=!1,f=!0;if("function"!=typeof e)throw new TypeError(h);function m(t){var n=o,a=i;return o=i=void 0,u=t,r=e.apply(a,n)}function p(e){var n=e-s;return void 0===s||n>=t||n<0||l&&e-u>=a}function b(){var e=S();if(p(e))return v(e);c=setTimeout(b,function(e){var n=t-(e-s);return l?M(n,a-(e-u)):n}(e))}function v(e){return c=void 0,f&&o?m(e):(o=i=void 0,r)}function g(){var e=S(),n=p(e);if(o=arguments,i=this,s=e,n){if(void 0===c)return function(e){return u=e,c=setTimeout(b,t),d?m(e):r}(s);if(l)return c=setTimeout(b,t),m(s)}return void 0===c&&(c=setTimeout(b,t)),r}return t=H(t)||0,D(n)&&(d=!!n.leading,a=(l="maxWait"in n)?T(H(n.maxWait)||0,t):a,f="trailing"in n?!!n.trailing:f),g.cancel=function(){void 0!==c&&clearTimeout(c),u=0,o=s=i=c=void 0},g.flush=function(){return void 0===c?r:v(S())},g},W=function(){};function P(e){e&&e.forEach(function(e){var t=Array.prototype.slice.call(e.addedNodes),n=Array.prototype.slice.call(e.removedNodes);if(function e(t){var n=void 0,o=void 0;for(n=0;n<t.length;n+=1){if((o=t[n]).dataset&&o.dataset.aos)return!0;if(o.children&&e(o.children))return!0}return!1}(t.concat(n)))return W()})}function Y(){return window.MutationObserver||window.WebKitMutationObserver||window.MozMutationObserver}var _={isSupported:function(){return!!Y()},ready:function(e,t){var n=window.document,o=new(Y())(P);W=t,o.observe(n.documentElement,{childList:!0,subtree:!0,removedNodes:!0})}},B=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},F=function(){function e(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,n,o){return n&&e(t.prototype,n),o&&e(t,o),t}}(),I=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(e[o]=n[o])}return e},K=/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i,G=/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i,J=/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i,Q=/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i;function R(){return navigator.userAgent||navigator.vendor||window.opera||""}var U=new(function(){function e(){B(this,e)}return F(e,[{key:"phone",value:function(){var e=R();return!(!K.test(e)&&!G.test(e.substr(0,4)))}},{key:"mobile",value:function(){var e=R();return!(!J.test(e)&&!Q.test(e.substr(0,4)))}},{key:"tablet",value:function(){return this.mobile()&&!this.phone()}},{key:"ie11",value:function(){return"-ms-scroll-limit"in document.documentElement.style&&"-ms-ime-align"in document.documentElement.style}}]),e}()),V=function(e,t){var n=void 0;return U.ie11()?(n=document.createEvent("CustomEvent")).initCustomEvent(e,!0,!0,{detail:t}):n=new CustomEvent(e,{detail:t}),document.dispatchEvent(n)},X=function(e){return e.forEach(function(e,t){return function(e,t){var n=e.options,o=e.position,i=e.node,a=(e.data,function(){e.animated&&(function(e,t){t&&t.forEach(function(t){return e.classList.remove(t)})}(i,n.animatedClassNames),V("aos:out",i),e.options.id&&V("aos:in:"+e.options.id,i),e.animated=!1)});n.mirror&&t>=o.out&&!n.once?a():t>=o.in?e.animated||(function(e,t){t&&t.forEach(function(t){return e.classList.add(t)})}(i,n.animatedClassNames),V("aos:in",i),e.options.id&&V("aos:in:"+e.options.id,i),e.animated=!0):e.animated&&!n.once&&a()}(e,window.pageYOffset)})},Z=function(e){for(var t=0,n=0;e&&!isNaN(e.offsetLeft)&&!isNaN(e.offsetTop);)t+=e.offsetLeft-("BODY"!=e.tagName?e.scrollLeft:0),n+=e.offsetTop-("BODY"!=e.tagName?e.scrollTop:0),e=e.offsetParent;return{top:n,left:t}},ee=function(e,t,n){var o=e.getAttribute("data-aos-"+t);if(void 0!==o){if("true"===o)return!0;if("false"===o)return!1}return o||n},te=function(e,t){return e.forEach(function(e,n){var o=ee(e.node,"mirror",t.mirror),i=ee(e.node,"once",t.once),a=ee(e.node,"id"),r=t.useClassNames&&e.node.getAttribute("data-aos"),c=[t.animatedClassName].concat(r?r.split(" "):[]).filter(function(e){return"string"==typeof e});t.initClassName&&e.node.classList.add(t.initClassName),e.position={in:function(e,t,n){var o=window.innerHeight,i=ee(e,"anchor"),a=ee(e,"anchor-placement"),r=Number(ee(e,"offset",a?0:t)),c=a||n,s=e;i&&document.querySelectorAll(i)&&(s=document.querySelectorAll(i)[0]);var u=Z(s).top-o;switch(c){case"top-bottom":break;case"center-bottom":u+=s.offsetHeight/2;break;case"bottom-bottom":u+=s.offsetHeight;break;case"top-center":u+=o/2;break;case"center-center":u+=o/2+s.offsetHeight/2;break;case"bottom-center":u+=o/2+s.offsetHeight;break;case"top-top":u+=o;break;case"bottom-top":u+=o+s.offsetHeight;break;case"center-top":u+=o+s.offsetHeight/2}return u+r}(e.node,t.offset,t.anchorPlacement),out:o&&function(e,t){window.innerHeight;var n=ee(e,"anchor"),o=ee(e,"offset",t),i=e;return n&&document.querySelectorAll(n)&&(i=document.querySelectorAll(n)[0]),Z(i).top+i.offsetHeight-o}(e.node,t.offset)},e.options={once:i,mirror:o,animatedClassNames:c,id:a}}),e},ne=function(){var e=document.querySelectorAll("[data-aos]");return Array.prototype.map.call(e,function(e){return{node:e}})},oe=[],ie=!1,ae={offset:120,delay:0,easing:"ease",duration:400,disable:!1,once:!1,mirror:!1,anchorPlacement:"top-bottom",startEvent:"DOMContentLoaded",animatedClassName:"aos-animate",initClassName:"aos-init",useClassNames:!1,disableMutationObserver:!1,throttleDelay:99,debounceDelay:50},re=function(){return document.all&&!window.atob},ce=function(){arguments.length>0&&void 0!==arguments[0]&&arguments[0]&&(ie=!0),ie&&(oe=te(oe,ae),X(oe),window.addEventListener("scroll",y(function(){X(oe,ae.once)},ae.throttleDelay)))},se=function(){if(oe=ne(),de(ae.disable)||re())return ue();ce()},ue=function(){oe.forEach(function(e,t){e.node.removeAttribute("data-aos"),e.node.removeAttribute("data-aos-easing"),e.node.removeAttribute("data-aos-duration"),e.node.removeAttribute("data-aos-delay"),ae.initClassName&&e.node.classList.remove(ae.initClassName),ae.animatedClassName&&e.node.classList.remove(ae.animatedClassName)})},de=function(e){return!0===e||"mobile"===e&&U.mobile()||"phone"===e&&U.phone()||"tablet"===e&&U.tablet()||"function"==typeof e&&!0===e()};return{init:function(e){return ae=I(ae,e),oe=ne(),ae.disableMutationObserver||_.isSupported()||(console.info('\n      aos: MutationObserver is not supported on this browser,\n      code mutations observing has been disabled.\n      You may have to call "refreshHard()" by yourself.\n    '),ae.disableMutationObserver=!0),ae.disableMutationObserver||_.ready("[data-aos]",se),de(ae.disable)||re()?ue():(document.querySelector("body").setAttribute("data-aos-easing",ae.easing),document.querySelector("body").setAttribute("data-aos-duration",ae.duration),document.querySelector("body").setAttribute("data-aos-delay",ae.delay),-1===["DOMContentLoaded","load"].indexOf(ae.startEvent)?document.addEventListener(ae.startEvent,function(){ce(!0)}):window.addEventListener("load",function(){ce(!0)}),"DOMContentLoaded"===ae.startEvent&&["complete","interactive"].indexOf(document.readyState)>-1&&ce(!0),window.addEventListener("resize",$(ce,ae.debounceDelay,!0)),window.addEventListener("orientationchange",$(ce,ae.debounceDelay,!0)),oe)},refresh:ce,refreshHard:se}});
+
+  </script>
+
+  <script>
+    import throttle from 'lodash.throttle';
+import debounce from 'lodash.debounce';
+
+var callback = function callback() {};
+
+function containsAOSNode(nodes) {
+  var i = void 0,
+      currentNode = void 0,
+      result = void 0;
+
+  for (i = 0; i < nodes.length; i += 1) {
+    currentNode = nodes[i];
+
+    if (currentNode.dataset && currentNode.dataset.aos) {
+      return true;
+    }
+
+    result = currentNode.children && containsAOSNode(currentNode.children);
+
+    if (result) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function check(mutations) {
+  if (!mutations) return;
+
+  mutations.forEach(function (mutation) {
+    var addedNodes = Array.prototype.slice.call(mutation.addedNodes);
+    var removedNodes = Array.prototype.slice.call(mutation.removedNodes);
+    var allNodes = addedNodes.concat(removedNodes);
+
+    if (containsAOSNode(allNodes)) {
+      return callback();
+    }
+  });
+}
+
+function getMutationObserver() {
+  return window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+}
+
+function isSupported() {
+  return !!getMutationObserver();
+}
+
+function ready(selector, fn) {
+  var doc = window.document;
+  var MutationObserver = getMutationObserver();
+
+  var observer = new MutationObserver(check);
+  callback = fn;
+
+  observer.observe(doc.documentElement, {
+    childList: true,
+    subtree: true,
+    removedNodes: true
+  });
+}
+
+var observer = { isSupported: isSupported, ready: ready };
+
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
+
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
+
+/**
+ * Device detector
+ */
+
+var fullNameRe = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i;
+var prefixRe = /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i;
+var fullNameMobileRe = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i;
+var prefixMobileRe = /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i;
+
+function ua() {
+  return navigator.userAgent || navigator.vendor || window.opera || '';
+}
+
+var Detector = function () {
+  function Detector() {
+    classCallCheck(this, Detector);
+  }
+
+  createClass(Detector, [{
+    key: 'phone',
+    value: function phone() {
+      var a = ua();
+      return !!(fullNameRe.test(a) || prefixRe.test(a.substr(0, 4)));
+    }
+  }, {
+    key: 'mobile',
+    value: function mobile() {
+      var a = ua();
+      return !!(fullNameMobileRe.test(a) || prefixMobileRe.test(a.substr(0, 4)));
+    }
+  }, {
+    key: 'tablet',
+    value: function tablet() {
+      return this.mobile() && !this.phone();
+    }
+
+    // http://browserhacks.com/#hack-acea075d0ac6954f275a70023906050c
+
+  }, {
+    key: 'ie11',
+    value: function ie11() {
+      return '-ms-scroll-limit' in document.documentElement.style && '-ms-ime-align' in document.documentElement.style;
+    }
+  }]);
+  return Detector;
+}();
+
+var detect = new Detector();
+
+/**
+ * Adds multiple classes on node
+ * @param {DOMNode} node
+ * @param {array}  classes
+ */
+var addClasses = function addClasses(node, classes) {
+  return classes && classes.forEach(function (className) {
+    return node.classList.add(className);
+  });
+};
+
+/**
+ * Removes multiple classes from node
+ * @param {DOMNode} node
+ * @param {array}  classes
+ */
+var removeClasses = function removeClasses(node, classes) {
+  return classes && classes.forEach(function (className) {
+    return node.classList.remove(className);
+  });
+};
+
+var fireEvent = function fireEvent(eventName, data) {
+  var customEvent = void 0;
+
+  if (detect.ie11()) {
+    customEvent = document.createEvent('CustomEvent');
+    customEvent.initCustomEvent(eventName, true, true, { detail: data });
+  } else {
+    customEvent = new CustomEvent(eventName, {
+      detail: data
+    });
+  }
+
+  return document.dispatchEvent(customEvent);
+};
+
+/**
+ * Set or remove aos-animate class
+ * @param {node} el         element
+ * @param {int}  top        scrolled distance
+ */
+var applyClasses = function applyClasses(el, top) {
+  var options = el.options,
+      position = el.position,
+      node = el.node,
+      data = el.data;
+
+
+  var hide = function hide() {
+    if (!el.animated) return;
+
+    removeClasses(node, options.animatedClassNames);
+    fireEvent('aos:out', node);
+
+    if (el.options.id) {
+      fireEvent('aos:in:' + el.options.id, node);
+    }
+
+    el.animated = false;
+  };
+
+  var show = function show() {
+    if (el.animated) return;
+
+    addClasses(node, options.animatedClassNames);
+
+    fireEvent('aos:in', node);
+    if (el.options.id) {
+      fireEvent('aos:in:' + el.options.id, node);
+    }
+
+    el.animated = true;
+  };
+
+  if (options.mirror && top >= position.out && !options.once) {
+    hide();
+  } else if (top >= position.in) {
+    show();
+  } else if (el.animated && !options.once) {
+    hide();
+  }
+};
+
+/**
+ * Scroll logic - add or remove 'aos-animate' class on scroll
+ *
+ * @param  {array} $elements         array of elements nodes
+ * @return {void}
+ */
+var handleScroll = function handleScroll($elements) {
+  return $elements.forEach(function (el, i) {
+    return applyClasses(el, window.pageYOffset);
+  });
+};
+
+/**
+ * Get offset of DOM element
+ * like there were no transforms applied on it
+ *
+ * @param  {Node} el [DOM element]
+ * @return {Object} [top and left offset]
+ */
+var offset = function offset(el) {
+  var _x = 0;
+  var _y = 0;
+
+  while (el && !isNaN(el.offsetLeft) && !isNaN(el.offsetTop)) {
+    _x += el.offsetLeft - (el.tagName != 'BODY' ? el.scrollLeft : 0);
+    _y += el.offsetTop - (el.tagName != 'BODY' ? el.scrollTop : 0);
+    el = el.offsetParent;
+  }
+
+  return {
+    top: _y,
+    left: _x
+  };
+};
+
+/**
+ * Get inline option with a fallback.
+ *
+ * @param  {Node} el [Dom element]
+ * @param  {String} key [Option key]
+ * @param  {String} fallback [Default (fallback) value]
+ * @return {Mixed} [Option set with inline attributes or fallback value if not set]
+ */
+
+var getInlineOption = (function (el, key, fallback) {
+  var attr = el.getAttribute('data-aos-' + key);
+
+  if (typeof attr !== 'undefined') {
+    if (attr === 'true') {
+      return true;
+    } else if (attr === 'false') {
+      return false;
+    }
+  }
+
+  return attr || fallback;
+});
+
+/**
+ * Calculate offset
+ * basing on element's settings like:
+ * - anchor
+ * - offset
+ *
+ * @param  {Node} el [Dom element]
+ * @return {Integer} [Final offset that will be used to trigger animation in good position]
+ */
+
+var getPositionIn = function getPositionIn(el, defaultOffset, defaultAnchorPlacement) {
+  var windowHeight = window.innerHeight;
+  var anchor = getInlineOption(el, 'anchor');
+  var inlineAnchorPlacement = getInlineOption(el, 'anchor-placement');
+  var additionalOffset = Number(getInlineOption(el, 'offset', inlineAnchorPlacement ? 0 : defaultOffset));
+  var anchorPlacement = inlineAnchorPlacement || defaultAnchorPlacement;
+  var finalEl = el;
+
+  if (anchor && document.querySelectorAll(anchor)) {
+    finalEl = document.querySelectorAll(anchor)[0];
+  }
+
+  var triggerPoint = offset(finalEl).top - windowHeight;
+
+  switch (anchorPlacement) {
+    case 'top-bottom':
+      // Default offset
+      break;
+    case 'center-bottom':
+      triggerPoint += finalEl.offsetHeight / 2;
+      break;
+    case 'bottom-bottom':
+      triggerPoint += finalEl.offsetHeight;
+      break;
+    case 'top-center':
+      triggerPoint += windowHeight / 2;
+      break;
+    case 'center-center':
+      triggerPoint += windowHeight / 2 + finalEl.offsetHeight / 2;
+      break;
+    case 'bottom-center':
+      triggerPoint += windowHeight / 2 + finalEl.offsetHeight;
+      break;
+    case 'top-top':
+      triggerPoint += windowHeight;
+      break;
+    case 'bottom-top':
+      triggerPoint += windowHeight + finalEl.offsetHeight;
+      break;
+    case 'center-top':
+      triggerPoint += windowHeight + finalEl.offsetHeight / 2;
+      break;
+  }
+
+  return triggerPoint + additionalOffset;
+};
+
+var getPositionOut = function getPositionOut(el, defaultOffset) {
+  var windowHeight = window.innerHeight;
+  var anchor = getInlineOption(el, 'anchor');
+  var additionalOffset = getInlineOption(el, 'offset', defaultOffset);
+  var finalEl = el;
+
+  if (anchor && document.querySelectorAll(anchor)) {
+    finalEl = document.querySelectorAll(anchor)[0];
+  }
+
+  var elementOffsetTop = offset(finalEl).top;
+
+  return elementOffsetTop + finalEl.offsetHeight - additionalOffset;
+};
+
+/* Clearing variables */
+
+var prepare = function prepare($elements, options) {
+  $elements.forEach(function (el, i) {
+    var mirror = getInlineOption(el.node, 'mirror', options.mirror);
+    var once = getInlineOption(el.node, 'once', options.once);
+    var id = getInlineOption(el.node, 'id');
+    var customClassNames = options.useClassNames && el.node.getAttribute('data-aos');
+
+    var animatedClassNames = [options.animatedClassName].concat(customClassNames ? customClassNames.split(' ') : []).filter(function (className) {
+      return typeof className === 'string';
+    });
+
+    if (options.initClassName) {
+      el.node.classList.add(options.initClassName);
+    }
+
+    el.position = {
+      in: getPositionIn(el.node, options.offset, options.anchorPlacement),
+      out: mirror && getPositionOut(el.node, options.offset)
+    };
+
+    el.options = {
+      once: once,
+      mirror: mirror,
+      animatedClassNames: animatedClassNames,
+      id: id
+    };
+  });
+
+  return $elements;
+};
+
+/**
+ * Generate initial array with elements as objects
+ * This array will be extended later with elements attributes values
+ * like 'position'
+ */
+var elements = (function () {
+  var elements = document.querySelectorAll('[data-aos]');
+  return Array.prototype.map.call(elements, function (node) {
+    return { node: node };
+  });
+});
+
+/**
+ * *******************************************************
+ * AOS (Animate on scroll) - wowjs alternative
+ * made to animate elements on scroll in both directions
+ * *******************************************************
+ */
+
+/**
+ * Private variables
+ */
+var $aosElements = [];
+var initialized = false;
+
+/**
+ * Default options
+ */
+var options = {
+  offset: 120,
+  delay: 0,
+  easing: 'ease',
+  duration: 400,
+  disable: false,
+  once: false,
+  mirror: false,
+  anchorPlacement: 'top-bottom',
+  startEvent: 'DOMContentLoaded',
+  animatedClassName: 'aos-animate',
+  initClassName: 'aos-init',
+  useClassNames: false,
+  disableMutationObserver: false,
+  throttleDelay: 99,
+  debounceDelay: 50
+};
+
+// Detect not supported browsers (<=IE9)
+// http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+var isBrowserNotSupported = function isBrowserNotSupported() {
+  return document.all && !window.atob;
+};
+
+var initializeScroll = function initializeScroll() {
+  // Extend elements objects in $aosElements with their positions
+  $aosElements = prepare($aosElements, options);
+  // Perform scroll event, to refresh view and show/hide elements
+  handleScroll($aosElements);
+
+  /**
+   * Handle scroll event to animate elements on scroll
+   */
+  window.addEventListener('scroll', throttle(function () {
+    handleScroll($aosElements, options.once);
+  }, options.throttleDelay));
+
+  return $aosElements;
+};
+
+/**
+ * Refresh AOS
+ */
+var refresh = function refresh() {
+  var initialize = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+  // Allow refresh only when it was first initialized on startEvent
+  if (initialize) initialized = true;
+  if (initialized) initializeScroll();
+};
+
+/**
+ * Hard refresh
+ * create array with new elements and trigger refresh
+ */
+var refreshHard = function refreshHard() {
+  $aosElements = elements();
+
+  if (isDisabled(options.disable) || isBrowserNotSupported()) {
+    return disable();
+  }
+
+  refresh();
+};
+
+/**
+ * Disable AOS
+ * Remove all attributes to reset applied styles
+ */
+var disable = function disable() {
+  $aosElements.forEach(function (el, i) {
+    el.node.removeAttribute('data-aos');
+    el.node.removeAttribute('data-aos-easing');
+    el.node.removeAttribute('data-aos-duration');
+    el.node.removeAttribute('data-aos-delay');
+
+    if (options.initClassName) {
+      el.node.classList.remove(options.initClassName);
+    }
+
+    if (options.animatedClassName) {
+      el.node.classList.remove(options.animatedClassName);
+    }
+  });
+};
+
+/**
+ * Check if AOS should be disabled based on provided setting
+ */
+var isDisabled = function isDisabled(optionDisable) {
+  return optionDisable === true || optionDisable === 'mobile' && detect.mobile() || optionDisable === 'phone' && detect.phone() || optionDisable === 'tablet' && detect.tablet() || typeof optionDisable === 'function' && optionDisable() === true;
+};
+
+/**
+ * Initializing AOS
+ * - Create options merging defaults with user defined options
+ * - Set attributes on <body> as global setting - css relies on it
+ * - Attach preparing elements to options.startEvent,
+ *   window resize and orientation change
+ * - Attach function that handle scroll and everything connected to it
+ *   to window scroll event and fire once document is ready to set initial state
+ */
+var init = function init(settings) {
+  options = _extends(options, settings);
+
+  // Create initial array with elements -> to be fullfilled later with prepare()
+  $aosElements = elements();
+
+  /**
+   * Disable mutation observing if not supported
+   */
+  if (!options.disableMutationObserver && !observer.isSupported()) {
+    console.info('\n      aos: MutationObserver is not supported on this browser,\n      code mutations observing has been disabled.\n      You may have to call "refreshHard()" by yourself.\n    ');
+    options.disableMutationObserver = true;
+  }
+
+  /**
+   * Observe [aos] elements
+   * If something is loaded by AJAX
+   * it'll refresh plugin automatically
+   */
+  if (!options.disableMutationObserver) {
+    observer.ready('[data-aos]', refreshHard);
+  }
+
+  /**
+   * Don't init plugin if option `disable` is set
+   * or when browser is not supported
+   */
+  if (isDisabled(options.disable) || isBrowserNotSupported()) {
+    return disable();
+  }
+
+  /**
+   * Set global settings on body, based on options
+   * so CSS can use it
+   */
+  document.querySelector('body').setAttribute('data-aos-easing', options.easing);
+
+  document.querySelector('body').setAttribute('data-aos-duration', options.duration);
+
+  document.querySelector('body').setAttribute('data-aos-delay', options.delay);
+
+  /**
+   * Handle initializing
+   */
+  if (['DOMContentLoaded', 'load'].indexOf(options.startEvent) === -1) {
+    // Listen to options.startEvent and initialize AOS
+    document.addEventListener(options.startEvent, function () {
+      refresh(true);
+    });
+  } else {
+    window.addEventListener('load', function () {
+      refresh(true);
+    });
+  }
+
+  if (options.startEvent === 'DOMContentLoaded' && ['complete', 'interactive'].indexOf(document.readyState) > -1) {
+    // Initialize AOS if default startEvent was already fired
+    refresh(true);
+  }
+
+  /**
+   * Refresh plugin on window resize or orientation change
+   */
+  window.addEventListener('resize', debounce(refresh, options.debounceDelay, true));
+
+  window.addEventListener('orientationchange', debounce(refresh, options.debounceDelay, true));
+
+  return $aosElements;
+};
+
+/**
+ * Export Public API
+ */
+
+var aos = {
+  init: init,
+  refresh: refresh,
+  refreshHard: refreshHard
+};
+
+export default aos;
+
+  </script>
+
+  <script>
+    'use strict';
+
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var throttle = _interopDefault(require('lodash.throttle'));
+var debounce = _interopDefault(require('lodash.debounce'));
+
+var callback = function callback() {};
+
+function containsAOSNode(nodes) {
+  var i = void 0,
+      currentNode = void 0,
+      result = void 0;
+
+  for (i = 0; i < nodes.length; i += 1) {
+    currentNode = nodes[i];
+
+    if (currentNode.dataset && currentNode.dataset.aos) {
+      return true;
+    }
+
+    result = currentNode.children && containsAOSNode(currentNode.children);
+
+    if (result) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function check(mutations) {
+  if (!mutations) return;
+
+  mutations.forEach(function (mutation) {
+    var addedNodes = Array.prototype.slice.call(mutation.addedNodes);
+    var removedNodes = Array.prototype.slice.call(mutation.removedNodes);
+    var allNodes = addedNodes.concat(removedNodes);
+
+    if (containsAOSNode(allNodes)) {
+      return callback();
+    }
+  });
+}
+
+function getMutationObserver() {
+  return window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+}
+
+function isSupported() {
+  return !!getMutationObserver();
+}
+
+function ready(selector, fn) {
+  var doc = window.document;
+  var MutationObserver = getMutationObserver();
+
+  var observer = new MutationObserver(check);
+  callback = fn;
+
+  observer.observe(doc.documentElement, {
+    childList: true,
+    subtree: true,
+    removedNodes: true
+  });
+}
+
+var observer = { isSupported: isSupported, ready: ready };
+
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
+
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
+
+/**
+ * Device detector
+ */
+
+var fullNameRe = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i;
+var prefixRe = /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i;
+var fullNameMobileRe = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i;
+var prefixMobileRe = /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i;
+
+function ua() {
+  return navigator.userAgent || navigator.vendor || window.opera || '';
+}
+
+var Detector = function () {
+  function Detector() {
+    classCallCheck(this, Detector);
+  }
+
+  createClass(Detector, [{
+    key: 'phone',
+    value: function phone() {
+      var a = ua();
+      return !!(fullNameRe.test(a) || prefixRe.test(a.substr(0, 4)));
+    }
+  }, {
+    key: 'mobile',
+    value: function mobile() {
+      var a = ua();
+      return !!(fullNameMobileRe.test(a) || prefixMobileRe.test(a.substr(0, 4)));
+    }
+  }, {
+    key: 'tablet',
+    value: function tablet() {
+      return this.mobile() && !this.phone();
+    }
+
+    // http://browserhacks.com/#hack-acea075d0ac6954f275a70023906050c
+
+  }, {
+    key: 'ie11',
+    value: function ie11() {
+      return '-ms-scroll-limit' in document.documentElement.style && '-ms-ime-align' in document.documentElement.style;
+    }
+  }]);
+  return Detector;
+}();
+
+var detect = new Detector();
+
+/**
+ * Adds multiple classes on node
+ * @param {DOMNode} node
+ * @param {array}  classes
+ */
+var addClasses = function addClasses(node, classes) {
+  return classes && classes.forEach(function (className) {
+    return node.classList.add(className);
+  });
+};
+
+/**
+ * Removes multiple classes from node
+ * @param {DOMNode} node
+ * @param {array}  classes
+ */
+var removeClasses = function removeClasses(node, classes) {
+  return classes && classes.forEach(function (className) {
+    return node.classList.remove(className);
+  });
+};
+
+var fireEvent = function fireEvent(eventName, data) {
+  var customEvent = void 0;
+
+  if (detect.ie11()) {
+    customEvent = document.createEvent('CustomEvent');
+    customEvent.initCustomEvent(eventName, true, true, { detail: data });
+  } else {
+    customEvent = new CustomEvent(eventName, {
+      detail: data
+    });
+  }
+
+  return document.dispatchEvent(customEvent);
+};
+
+/**
+ * Set or remove aos-animate class
+ * @param {node} el         element
+ * @param {int}  top        scrolled distance
+ */
+var applyClasses = function applyClasses(el, top) {
+  var options = el.options,
+      position = el.position,
+      node = el.node,
+      data = el.data;
+
+
+  var hide = function hide() {
+    if (!el.animated) return;
+
+    removeClasses(node, options.animatedClassNames);
+    fireEvent('aos:out', node);
+
+    if (el.options.id) {
+      fireEvent('aos:in:' + el.options.id, node);
+    }
+
+    el.animated = false;
+  };
+
+  var show = function show() {
+    if (el.animated) return;
+
+    addClasses(node, options.animatedClassNames);
+
+    fireEvent('aos:in', node);
+    if (el.options.id) {
+      fireEvent('aos:in:' + el.options.id, node);
+    }
+
+    el.animated = true;
+  };
+
+  if (options.mirror && top >= position.out && !options.once) {
+    hide();
+  } else if (top >= position.in) {
+    show();
+  } else if (el.animated && !options.once) {
+    hide();
+  }
+};
+
+/**
+ * Scroll logic - add or remove 'aos-animate' class on scroll
+ *
+ * @param  {array} $elements         array of elements nodes
+ * @return {void}
+ */
+var handleScroll = function handleScroll($elements) {
+  return $elements.forEach(function (el, i) {
+    return applyClasses(el, window.pageYOffset);
+  });
+};
+
+/**
+ * Get offset of DOM element
+ * like there were no transforms applied on it
+ *
+ * @param  {Node} el [DOM element]
+ * @return {Object} [top and left offset]
+ */
+var offset = function offset(el) {
+  var _x = 0;
+  var _y = 0;
+
+  while (el && !isNaN(el.offsetLeft) && !isNaN(el.offsetTop)) {
+    _x += el.offsetLeft - (el.tagName != 'BODY' ? el.scrollLeft : 0);
+    _y += el.offsetTop - (el.tagName != 'BODY' ? el.scrollTop : 0);
+    el = el.offsetParent;
+  }
+
+  return {
+    top: _y,
+    left: _x
+  };
+};
+
+/**
+ * Get inline option with a fallback.
+ *
+ * @param  {Node} el [Dom element]
+ * @param  {String} key [Option key]
+ * @param  {String} fallback [Default (fallback) value]
+ * @return {Mixed} [Option set with inline attributes or fallback value if not set]
+ */
+
+var getInlineOption = (function (el, key, fallback) {
+  var attr = el.getAttribute('data-aos-' + key);
+
+  if (typeof attr !== 'undefined') {
+    if (attr === 'true') {
+      return true;
+    } else if (attr === 'false') {
+      return false;
+    }
+  }
+
+  return attr || fallback;
+});
+
+/**
+ * Calculate offset
+ * basing on element's settings like:
+ * - anchor
+ * - offset
+ *
+ * @param  {Node} el [Dom element]
+ * @return {Integer} [Final offset that will be used to trigger animation in good position]
+ */
+
+var getPositionIn = function getPositionIn(el, defaultOffset, defaultAnchorPlacement) {
+  var windowHeight = window.innerHeight;
+  var anchor = getInlineOption(el, 'anchor');
+  var inlineAnchorPlacement = getInlineOption(el, 'anchor-placement');
+  var additionalOffset = Number(getInlineOption(el, 'offset', inlineAnchorPlacement ? 0 : defaultOffset));
+  var anchorPlacement = inlineAnchorPlacement || defaultAnchorPlacement;
+  var finalEl = el;
+
+  if (anchor && document.querySelectorAll(anchor)) {
+    finalEl = document.querySelectorAll(anchor)[0];
+  }
+
+  var triggerPoint = offset(finalEl).top - windowHeight;
+
+  switch (anchorPlacement) {
+    case 'top-bottom':
+      // Default offset
+      break;
+    case 'center-bottom':
+      triggerPoint += finalEl.offsetHeight / 2;
+      break;
+    case 'bottom-bottom':
+      triggerPoint += finalEl.offsetHeight;
+      break;
+    case 'top-center':
+      triggerPoint += windowHeight / 2;
+      break;
+    case 'center-center':
+      triggerPoint += windowHeight / 2 + finalEl.offsetHeight / 2;
+      break;
+    case 'bottom-center':
+      triggerPoint += windowHeight / 2 + finalEl.offsetHeight;
+      break;
+    case 'top-top':
+      triggerPoint += windowHeight;
+      break;
+    case 'bottom-top':
+      triggerPoint += windowHeight + finalEl.offsetHeight;
+      break;
+    case 'center-top':
+      triggerPoint += windowHeight + finalEl.offsetHeight / 2;
+      break;
+  }
+
+  return triggerPoint + additionalOffset;
+};
+
+var getPositionOut = function getPositionOut(el, defaultOffset) {
+  var windowHeight = window.innerHeight;
+  var anchor = getInlineOption(el, 'anchor');
+  var additionalOffset = getInlineOption(el, 'offset', defaultOffset);
+  var finalEl = el;
+
+  if (anchor && document.querySelectorAll(anchor)) {
+    finalEl = document.querySelectorAll(anchor)[0];
+  }
+
+  var elementOffsetTop = offset(finalEl).top;
+
+  return elementOffsetTop + finalEl.offsetHeight - additionalOffset;
+};
+
+/* Clearing variables */
+
+var prepare = function prepare($elements, options) {
+  $elements.forEach(function (el, i) {
+    var mirror = getInlineOption(el.node, 'mirror', options.mirror);
+    var once = getInlineOption(el.node, 'once', options.once);
+    var id = getInlineOption(el.node, 'id');
+    var customClassNames = options.useClassNames && el.node.getAttribute('data-aos');
+
+    var animatedClassNames = [options.animatedClassName].concat(customClassNames ? customClassNames.split(' ') : []).filter(function (className) {
+      return typeof className === 'string';
+    });
+
+    if (options.initClassName) {
+      el.node.classList.add(options.initClassName);
+    }
+
+    el.position = {
+      in: getPositionIn(el.node, options.offset, options.anchorPlacement),
+      out: mirror && getPositionOut(el.node, options.offset)
+    };
+
+    el.options = {
+      once: once,
+      mirror: mirror,
+      animatedClassNames: animatedClassNames,
+      id: id
+    };
+  });
+
+  return $elements;
+};
+
+/**
+ * Generate initial array with elements as objects
+ * This array will be extended later with elements attributes values
+ * like 'position'
+ */
+var elements = (function () {
+  var elements = document.querySelectorAll('[data-aos]');
+  return Array.prototype.map.call(elements, function (node) {
+    return { node: node };
+  });
+});
+
+/**
+ * *******************************************************
+ * AOS (Animate on scroll) - wowjs alternative
+ * made to animate elements on scroll in both directions
+ * *******************************************************
+ */
+
+/**
+ * Private variables
+ */
+var $aosElements = [];
+var initialized = false;
+
+/**
+ * Default options
+ */
+var options = {
+  offset: 120,
+  delay: 0,
+  easing: 'ease',
+  duration: 400,
+  disable: false,
+  once: false,
+  mirror: false,
+  anchorPlacement: 'top-bottom',
+  startEvent: 'DOMContentLoaded',
+  animatedClassName: 'aos-animate',
+  initClassName: 'aos-init',
+  useClassNames: false,
+  disableMutationObserver: false,
+  throttleDelay: 99,
+  debounceDelay: 50
+};
+
+// Detect not supported browsers (<=IE9)
+// http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+var isBrowserNotSupported = function isBrowserNotSupported() {
+  return document.all && !window.atob;
+};
+
+var initializeScroll = function initializeScroll() {
+  // Extend elements objects in $aosElements with their positions
+  $aosElements = prepare($aosElements, options);
+  // Perform scroll event, to refresh view and show/hide elements
+  handleScroll($aosElements);
+
+  /**
+   * Handle scroll event to animate elements on scroll
+   */
+  window.addEventListener('scroll', throttle(function () {
+    handleScroll($aosElements, options.once);
+  }, options.throttleDelay));
+
+  return $aosElements;
+};
+
+/**
+ * Refresh AOS
+ */
+var refresh = function refresh() {
+  var initialize = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+  // Allow refresh only when it was first initialized on startEvent
+  if (initialize) initialized = true;
+  if (initialized) initializeScroll();
+};
+
+/**
+ * Hard refresh
+ * create array with new elements and trigger refresh
+ */
+var refreshHard = function refreshHard() {
+  $aosElements = elements();
+
+  if (isDisabled(options.disable) || isBrowserNotSupported()) {
+    return disable();
+  }
+
+  refresh();
+};
+
+/**
+ * Disable AOS
+ * Remove all attributes to reset applied styles
+ */
+var disable = function disable() {
+  $aosElements.forEach(function (el, i) {
+    el.node.removeAttribute('data-aos');
+    el.node.removeAttribute('data-aos-easing');
+    el.node.removeAttribute('data-aos-duration');
+    el.node.removeAttribute('data-aos-delay');
+
+    if (options.initClassName) {
+      el.node.classList.remove(options.initClassName);
+    }
+
+    if (options.animatedClassName) {
+      el.node.classList.remove(options.animatedClassName);
+    }
+  });
+};
+
+/**
+ * Check if AOS should be disabled based on provided setting
+ */
+var isDisabled = function isDisabled(optionDisable) {
+  return optionDisable === true || optionDisable === 'mobile' && detect.mobile() || optionDisable === 'phone' && detect.phone() || optionDisable === 'tablet' && detect.tablet() || typeof optionDisable === 'function' && optionDisable() === true;
+};
+
+/**
+ * Initializing AOS
+ * - Create options merging defaults with user defined options
+ * - Set attributes on <body> as global setting - css relies on it
+ * - Attach preparing elements to options.startEvent,
+ *   window resize and orientation change
+ * - Attach function that handle scroll and everything connected to it
+ *   to window scroll event and fire once document is ready to set initial state
+ */
+var init = function init(settings) {
+  options = _extends(options, settings);
+
+  // Create initial array with elements -> to be fullfilled later with prepare()
+  $aosElements = elements();
+
+  /**
+   * Disable mutation observing if not supported
+   */
+  if (!options.disableMutationObserver && !observer.isSupported()) {
+    console.info('\n      aos: MutationObserver is not supported on this browser,\n      code mutations observing has been disabled.\n      You may have to call "refreshHard()" by yourself.\n    ');
+    options.disableMutationObserver = true;
+  }
+
+  /**
+   * Observe [aos] elements
+   * If something is loaded by AJAX
+   * it'll refresh plugin automatically
+   */
+  if (!options.disableMutationObserver) {
+    observer.ready('[data-aos]', refreshHard);
+  }
+
+  /**
+   * Don't init plugin if option `disable` is set
+   * or when browser is not supported
+   */
+  if (isDisabled(options.disable) || isBrowserNotSupported()) {
+    return disable();
+  }
+
+  /**
+   * Set global settings on body, based on options
+   * so CSS can use it
+   */
+  document.querySelector('body').setAttribute('data-aos-easing', options.easing);
+
+  document.querySelector('body').setAttribute('data-aos-duration', options.duration);
+
+  document.querySelector('body').setAttribute('data-aos-delay', options.delay);
+
+  /**
+   * Handle initializing
+   */
+  if (['DOMContentLoaded', 'load'].indexOf(options.startEvent) === -1) {
+    // Listen to options.startEvent and initialize AOS
+    document.addEventListener(options.startEvent, function () {
+      refresh(true);
+    });
+  } else {
+    window.addEventListener('load', function () {
+      refresh(true);
+    });
+  }
+
+  if (options.startEvent === 'DOMContentLoaded' && ['complete', 'interactive'].indexOf(document.readyState) > -1) {
+    // Initialize AOS if default startEvent was already fired
+    refresh(true);
+  }
+
+  /**
+   * Refresh plugin on window resize or orientation change
+   */
+  window.addEventListener('resize', debounce(refresh, options.debounceDelay, true));
+
+  window.addEventListener('orientationchange', debounce(refresh, options.debounceDelay, true));
+
+  return $aosElements;
+};
+
+/**
+ * Export Public API
+ */
+
+var aos = {
+  init: init,
+  refresh: refresh,
+  refreshHard: refreshHard
+};
+
+module.exports = aos;
+
+  </script>
+  <script>
+    
+    /**
+* Template Name: Bootslander
+* Updated: May 30 2023 with Bootstrap v5.3.0
+* Template URL: https://bootstrapmade.com/bootslander-free-bootstrap-landing-page-template/
+* Author: BootstrapMade.com
+* License: https://bootstrapmade.com/license/
+*/
+(function() {
+  "use strict";
+
+  /**
+   * Easy selector helper function
+   */
+  const select = (el, all = false) => {
+    el = el.trim()
+    if (all) {
+      return [...document.querySelectorAll(el)]
+    } else {
+      return document.querySelector(el)
+    }
+  }
+
+  /**
+   * Easy event listener function
+   */
+  const on = (type, el, listener, all = false) => {
+    let selectEl = select(el, all)
+    if (selectEl) {
+      if (all) {
+        selectEl.forEach(e => e.addEventListener(type, listener))
+      } else {
+        selectEl.addEventListener(type, listener)
+      }
+    }
+  }
+
+  /**
+   * Easy on scroll event listener 
+   */
+  const onscroll = (el, listener) => {
+    el.addEventListener('scroll', listener)
+  }
+
+  /**
+   * Navbar links active state on scroll
+   */
+  let navbarlinks = select('#navbar .scrollto', true)
+  const navbarlinksActive = () => {
+    let position = window.scrollY + 200
+    navbarlinks.forEach(navbarlink => {
+      if (!navbarlink.hash) return
+      let section = select(navbarlink.hash)
+      if (!section) return
+      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
+        navbarlink.classList.add('active')
+      } else {
+        navbarlink.classList.remove('active')
+      }
+    })
+  }
+  window.addEventListener('load', navbarlinksActive)
+  onscroll(document, navbarlinksActive)
+
+  /**
+   * Scrolls to an element with header offset
+   */
+  const scrollto = (el) => {
+    let header = select('#header')
+    let offset = header.offsetHeight
+
+    if (!header.classList.contains('header-scrolled')) {
+      offset -= 20
+    }
+
+    let elementPos = select(el).offsetTop
+    window.scrollTo({
+      top: elementPos - offset,
+      behavior: 'smooth'
+    })
+  }
+
+  /**
+   * Toggle .header-scrolled class to #header when page is scrolled
+   */
+  let selectHeader = select('#header')
+  if (selectHeader) {
+    const headerScrolled = () => {
+      if (window.scrollY > 100) {
+        selectHeader.classList.add('header-scrolled')
+      } else {
+        selectHeader.classList.remove('header-scrolled')
+      }
+    }
+    window.addEventListener('load', headerScrolled)
+    onscroll(document, headerScrolled)
+  }
+
+  /**
+   * Back to top button
+   */
+  let backtotop = select('.back-to-top')
+  if (backtotop) {
+    const toggleBacktotop = () => {
+      if (window.scrollY > 100) {
+        backtotop.classList.add('active')
+      } else {
+        backtotop.classList.remove('active')
+      }
+    }
+    window.addEventListener('load', toggleBacktotop)
+    onscroll(document, toggleBacktotop)
+  }
+
+  /**
+   * Mobile nav toggle
+   */
+  on('click', '.mobile-nav-toggle', function(e) {
+    select('#navbar').classList.toggle('navbar-mobile')
+    this.classList.toggle('bi-list')
+    this.classList.toggle('bi-x')
+  })
+
+  /**
+   * Mobile nav dropdowns activate
+   */
+  on('click', '.navbar .dropdown > a', function(e) {
+    if (select('#navbar').classList.contains('navbar-mobile')) {
+      e.preventDefault()
+      this.nextElementSibling.classList.toggle('dropdown-active')
+    }
+  }, true)
+
+  /**
+   * Scrool with ofset on links with a class name .scrollto
+   */
+  on('click', '.scrollto', function(e) {
+    if (select(this.hash)) {
+      e.preventDefault()
+
+      let navbar = select('#navbar')
+      if (navbar.classList.contains('navbar-mobile')) {
+        navbar.classList.remove('navbar-mobile')
+        let navbarToggle = select('.mobile-nav-toggle')
+        navbarToggle.classList.toggle('bi-list')
+        navbarToggle.classList.toggle('bi-x')
+      }
+      scrollto(this.hash)
+    }
+  }, true)
+
+  /**
+   * Scroll with ofset on page load with hash links in the url
+   */
+  window.addEventListener('load', () => {
+    if (window.location.hash) {
+      if (select(window.location.hash)) {
+        scrollto(window.location.hash)
+      }
+    }
+  });
+
+  /**
+   * Preloader
+   */
+  let preloader = select('#preloader');
+  if (preloader) {
+    window.addEventListener('load', () => {
+      preloader.remove()
+    });
+  }
+
+  /**
+   * Initiate glightbox
+   */
+  const glightbox = GLightbox({
+    selector: '.glightbox'
+  });
+
+  /**
+   * Initiate gallery lightbox 
+   */
+  const galleryLightbox = GLightbox({
+    selector: '.gallery-lightbox'
+  });
+
+  /**
+   * Testimonials slider
+   */
+  new Swiper('.testimonials-slider', {
+    speed: 600,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false
+    },
+    slidesPerView: 'auto',
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true
+    }
+  });
+
+  /**
+   * Animation on scroll
+   */
+  window.addEventListener('load', () => {
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false
+    })
+  });
+
+  /**
+   * Initiate Pure Counter 
+   */
+  new PureCounter();
+
+})()
+  </script>
+
+
+  <?php
+  /**
+  * Requires the "PHP Email Form" library
+  * The "PHP Email Form" library is available only in the pro version of the template
+  * The library should be uploaded to: vendor/php-email-form/php-email-form.php
+  * For more info and help: https://bootstrapmade.com/php-email-form/
+  */
+
+  // Replace contact@example.com with your real receiving email address
+  $receiving_email_address = 'pinak@zoomers.in';
+
+  if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
+    include( $php_email_form );
+  } else {
+    die( 'Unable to load the "PHP Email Form" Library!');
+  }
+
+  $contact = new PHP_Email_Form;
+  $contact->ajax = true;
+  
+  $contact->to = $receiving_email_address;
+  $contact->from_name = $_POST['name'];
+  $contact->from_email = $_POST['email'];
+  $contact->subject = $_POST['subject'];
+
+  // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
+  /*
+  $contact->smtp = array(
+    'host' => 'example.com',
+    'username' => 'example',
+    'password' => 'pass',
+    'port' => '587'
+  );
+  */
+
+  $contact->add_message( $_POST['name'], 'From');
+  $contact->add_message( $_POST['email'], 'Email');
+  $contact->add_message( $_POST['message'], 'Message', 10);
+
+  echo $contact->send();
+?>
+
 
 </body>
 
